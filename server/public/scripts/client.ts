@@ -38,3 +38,5 @@ function renderTodos(todos) {
       }
     }
   }
+
+  getTodos()
