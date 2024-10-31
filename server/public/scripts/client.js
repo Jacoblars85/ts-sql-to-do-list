@@ -1,1 +1,27 @@
 console.log('JS is sourced!');
+//get route
+function getTodos() {
+    console.log('in get route');
+    axios({
+        url: '/todos',
+        method: 'GET'
+    }).then(function (response) {
+        renderTodos(response.data);
+    });
+}
+//render route
+function renderTodos(todos) {
+    console.log('in render function');
+    var toDoBody = document.getElementById('todoBody');
+    toDoBody.innerHTML = '';
+    for (var _i = 0, todos_1 = todos; _i < todos_1.length; _i++) {
+        var todo = todos_1[_i];
+        var isComplete = todo.isComplete;
+        if (isComplete === true) {
+            toDoBody.innerHTML += "\n      <ul data-testid=\"toDoItem\" class=\"completed\" data-todoId=\"".concat(todo.id, "\" >").concat(todo.text, " \n      <button data-testid=\"deleteButton\" class=\"delete\" onclick=\"deleteButton(event)\" >Delete</button>\n      </ul>\n      ");
+        }
+        else if (isComplete === false) {
+            toDoBody.innerHTML += "\n        <ul data-testid=\"toDoItem\" data-todoId=\"".concat(todo.id, "\" >").concat(todo.text, " \n        <button data-testid=\"completeButton\" class=\"complete\" onclick=\"makeComplete(event)\" >Complete</button>\n        <button data-testid=\"deleteButton\" class=\"delete\" onclick=\"deleteButton(event)\" >Delete</button>\n        </ul>\n        ");
+        }
+    }
+}
