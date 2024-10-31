@@ -18,10 +18,10 @@ function renderTodos(todos) {
         var todo = todos_1[_i];
         var isComplete = todo.isComplete;
         if (isComplete === true) {
-            toDoBody.innerHTML += "\n      <ul class=\"completed\" data-todoId=\"".concat(todo.id, "\" >").concat(todo.text, " \n      <button class=\"delete\" onclick=\"deleteButton(event)\" >Delete</button>\n      </ul>\n      ");
+            toDoBody.innerHTML += "\n      <ul class=\"completed\" >".concat(todo.text, " \n      <button class=\"delete\" onclick=\"deleteButton(event)\" >Delete</button>\n      </ul>\n      ");
         }
         else if (isComplete === false) {
-            toDoBody.innerHTML += "\n        <ul data-todoId=\"".concat(todo.id, "\" >").concat(todo.text, " \n        <button class=\"complete\" onclick=\"makeComplete(event)\" >Complete</button>\n        <button class=\"delete\" onclick=\"deleteButton(event)\" >Delete</button>\n        </ul>\n        ");
+            toDoBody.innerHTML += "\n        <ul>".concat(todo.text, " \n        <button class=\"complete\" onclick=\"makeComplete(event)\" >Complete</button>\n        <button class=\"delete\" onclick=\"deleteButton(event)\" >Delete</button>\n        </ul>\n        ");
         }
     }
 }
