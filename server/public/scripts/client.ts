@@ -16,7 +16,7 @@ function getTodos() {
 //render route
 function renderTodos(todos) {
     console.log('in render function');
-    const toDoBody = document.getElementById('todoBody');
+    const toDoBody: any = document.getElementById('todoBody');
     toDoBody.innerHTML = '';
   
     for (let todo of todos) {
