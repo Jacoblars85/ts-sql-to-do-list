@@ -25,3 +25,4 @@ function renderTodos(todos) {
         }
     }
 }
+getTodos();
