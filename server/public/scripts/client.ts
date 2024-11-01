@@ -69,6 +69,9 @@ function postTodos(event) {
 function makeComplete(event) {
     console.log('finishing that task');
     let todoId = event.target.closest('ul').getAttribute('data-todoId');
+
+    console.log('todoId', todoId);
+ 
   
     axios({
       url: `/todos/${todoId}`,
