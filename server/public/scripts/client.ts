@@ -42,7 +42,7 @@ function renderTodos(todos) {
 function postTodos(event) {
     console.log('clicking add');
   
-    let todoInput = document.getElementById('toDoTextInput').value;
+    let todoInput = document.getElementById('toDoTextInput') as HTMLInputElement;
   
   let newTodo = {
     text: todoInput
