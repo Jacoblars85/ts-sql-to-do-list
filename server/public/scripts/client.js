@@ -45,4 +45,18 @@ function postTodos(event) {
         console.log(error, 'Error in posting todos');
     });
 }
+//put route
+function makeComplete(event) {
+    console.log('finishing that task');
+    var todoId = event.target.closest('ul').getAttribute('data-todoId');
+    console.log('todoId', todoId);
+    axios({
+        url: "/todos/".concat(todoId),
+        method: 'PUT'
+    }).then(function (response) {
+        getTodos();
+    }).catch(function (error) {
+        console.log(error, 'Error in completing todo');
+    });
+}
 getTodos();
