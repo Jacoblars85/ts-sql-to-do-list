@@ -23,5 +23,27 @@ router.get('/', (req, res) => {
 })
 
 
+//post route
+router.post('/', (req, res) => {
+    console.log(req.body);
+   
+    const sqlQueryText = `
+        INSERT INTO "todos"
+            ("text")
+            VALUES
+            ($1);
+    `
+    const sqlValues = [req.body.text];
+    console.log(sqlValues, "are the values");
+    pool.query(sqlQueryText, sqlValues)
+        .then((result) => {
+            res.sendStatus(201);
+            console.log('POST successful');
+        }).catch((err) => {
+          console.log('error posting todos', err);
+            res.sendStatus(500);
+        })
+  })
+
 
 module.exports = router;
