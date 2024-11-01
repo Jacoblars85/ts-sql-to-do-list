@@ -48,7 +48,11 @@ function postTodos(event) {
     text: todoInput.value
   };
   
+//   clears input
   todoInput.value = '';
+
+  console.log('newTodo', newTodo);
+  
   
     axios({
       url: '/todos',
