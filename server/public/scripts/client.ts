@@ -45,10 +45,10 @@ function postTodos(event) {
     let todoInput = document.getElementById('toDoTextInput') as HTMLInputElement;
   
   let newTodo = {
-    text: todoInput
+    text: todoInput.value
   };
   
-  document.getElementById('toDoTextInput').value = '';
+  todoInput.value = '';
   
     axios({
       url: '/todos',
