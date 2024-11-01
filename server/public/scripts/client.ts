@@ -65,4 +65,22 @@ function postTodos(event) {
     })
   }
 
+//put route
+function makeComplete(event) {
+    console.log('finishing that task');
+    let todoId = event.target.closest('ul').getAttribute('data-todoId');
+  
+    axios({
+      url: `/todos/${todoId}`,
+      method: 'PUT'
+    }).then((response) => {
+      getTodos()
+    }).catch((error) =>{
+      console.log(error, 'Error in completing todo');
+    })
+   
+  }
+
+
+
 getTodos();
