@@ -15,4 +15,19 @@ router.get('/', function (req, res) {
         res.sendStatus(500);
     });
 });
+//post route
+router.post('/', function (req, res) {
+    console.log(req.body);
+    var sqlQueryText = "\n        INSERT INTO \"todos\"\n            (\"text\")\n            VALUES\n            ($1);\n    ";
+    var sqlValues = [req.body.text];
+    console.log(sqlValues, "are the values");
+    pool.query(sqlQueryText, sqlValues)
+        .then(function (result) {
+        res.sendStatus(201);
+        console.log('POST successful');
+    }).catch(function (err) {
+        console.log('error posting todos', err);
+        res.sendStatus(500);
+    });
+});
 module.exports = router;
