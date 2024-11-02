@@ -23,14 +23,14 @@ function renderTodos(todos) {
 
     if (isComplete === true) {
       toDoBody.innerHTML += `
-      <ul class="completed" >${todo.text} 
+      <ul data-todoId="${todo.id}" class="completed" >${todo.text} 
       <button class="delete" onclick="deleteButton(event)" >Delete</button>
       </ul>
       `;
     } else if (isComplete === false) {
       toDoBody.innerHTML += `
         <ul>${todo.text} 
-        <button class="complete" onclick="makeComplete(event)" >Complete</button>
+        <button data-todoId="${todo.id}" class="complete" onclick="makeComplete(event)" >Complete</button>
         <button class="delete" onclick="deleteButton(event)" >Delete</button>
         </ul>
         `;
