@@ -21,7 +21,7 @@ function renderTodos(todos) {
             toDoBody.innerHTML += "\n      <ul id=\"".concat(todo.id, "\" class=\"completed\" >").concat(todo.text, " \n      <button class=\"delete\" onclick=\"deleteButton(event)\" >Delete</button>\n      </ul>\n      ");
         }
         else if (isComplete === false) {
-            toDoBody.innerHTML += "\n        <ul>".concat(todo.text, " \n        <button id=\"").concat(todo.id, "\" class=\"complete\" onclick=\"makeComplete(event)\" >Complete</button>\n        <button class=\"delete\" onclick=\"deleteButton(event)\" >Delete</button>\n        </ul>\n        ");
+            toDoBody.innerHTML += "\n        <ul>".concat(todo.text, " \n        <button id=\"").concat(todo.id, "\" class=\"complete\" onclick=\"completeTodo(event)\" >Complete</button>\n        <button class=\"delete\" onclick=\"deleteButton(event)\" >Delete</button>\n        </ul>\n        ");
         }
     }
 }
@@ -48,7 +48,7 @@ function postTodos(event) {
     });
 }
 //put route
-function makeComplete(event) {
+function completeTodo(event) {
     console.log("finishing that task");
     var todo = event.target;
     console.log("todoId", todo.id);
@@ -61,6 +61,19 @@ function makeComplete(event) {
     })
         .catch(function (error) {
         console.log(error, "Error in completing todo");
+    });
+}
+//delete route
+function deleteButton(event) {
+    console.log('trying to delete');
+    var todoId = event.target.closest('ul').getAttribute('data-todoId');
+    axios({
+        method: 'DELETE',
+        url: "/todos/".concat(todoId)
+    }).then(function (response) {
+        getTodos();
+    }).catch(function (error) {
+        console.log('delete /todos/:id fail', error);
     });
 }
 getTodos();
