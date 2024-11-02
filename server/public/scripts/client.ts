@@ -23,14 +23,14 @@ function renderTodos(todos) {
 
     if (isComplete === true) {
       toDoBody.innerHTML += `
-      <ul data-todoId="${todo.id}" class="completed" >${todo.text} 
+      <ul todoId="${todo.id}" class="completed" >${todo.text} 
       <button class="delete" onclick="deleteButton(event)" >Delete</button>
       </ul>
       `;
     } else if (isComplete === false) {
       toDoBody.innerHTML += `
         <ul>${todo.text} 
-        <button data-todoId="${todo.id}" class="complete" onclick="makeComplete(event)" >Complete</button>
+        <button todoId="${todo.id}" class="complete" onclick="makeComplete(event)" >Complete</button>
         <button class="delete" onclick="deleteButton(event)" >Delete</button>
         </ul>
         `;
@@ -69,7 +69,7 @@ function postTodos(event) {
 //put route
 function makeComplete(event) {
   console.log("finishing that task");
-  let todoId = event.target.closest("ul").getAttribute("data-todoId");
+  let todoId = event.target.closest("ul").getAttribute("todoId");
 
   console.log("todoId", todoId);
 
