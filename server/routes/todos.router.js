@@ -44,4 +44,17 @@ router.put('/:id', function (req, res) {
         console.log('got an error in put route', err);
     });
 });
+//delete route
+router.delete("/:id", function (req, res) {
+    var sqlQueryText = "\n    DELETE FROM \"todos\"\n      WHERE \"id\" = $1;\n    ";
+    var sqlValues = [req.params.id];
+    pool.query(sqlQueryText, sqlValues)
+        .then(function (result) {
+        res.sendStatus(200);
+    })
+        .catch(function (err) {
+        console.log("DELETE /todos SQL query failed: ", err);
+        res.sendStatus(500);
+    });
+});
 module.exports = router;
