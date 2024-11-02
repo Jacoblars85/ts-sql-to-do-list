@@ -23,14 +23,14 @@ function renderTodos(todos) {
 
     if (isComplete === true) {
       toDoBody.innerHTML += `
-      <ul todoId="${todo.id}" class="completed" >${todo.text} 
+      <ul id="${todo.id}" class="completed" >${todo.text} 
       <button class="delete" onclick="deleteButton(event)" >Delete</button>
       </ul>
       `;
     } else if (isComplete === false) {
       toDoBody.innerHTML += `
         <ul>${todo.text} 
-        <button todoId="${todo.id}" class="complete" onclick="makeComplete(event)" >Complete</button>
+        <button id="${todo.id}" class="complete" onclick="makeComplete(event)" >Complete</button>
         <button class="delete" onclick="deleteButton(event)" >Delete</button>
         </ul>
         `;
@@ -69,12 +69,12 @@ function postTodos(event) {
 //put route
 function makeComplete(event) {
   console.log("finishing that task");
-  let todoId = event.target.closest("ul").getAttribute("todoId");
+  let todo = event.target;
 
-  console.log("todoId", todoId);
+  console.log("todoId", todo.id);
 
   axios({
-    url: `/todos/${todoId}`,
+    url: `/todos/${todo.id}`,
     method: "PUT",
   })
     .then((response) => {
