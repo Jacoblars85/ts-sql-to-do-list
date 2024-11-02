@@ -76,10 +76,8 @@ router.delete(`/:id`, (req, res) => {
     DELETE FROM "todos"
       WHERE "id" = $1;
     `
-    const sqlValues = [
-      req.params.id
-    ]
-    // console.log(`sql Values from html`, req.params);
+    const sqlValues = [req.params.id]
+
     pool.query(sqlQueryText, sqlValues)
       .then((result) => {
         res.sendStatus(200)
