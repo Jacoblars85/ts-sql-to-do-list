@@ -67,7 +67,7 @@ function postTodos(event) {
 }
 
 //put route
-function makeComplete(event) {
+function completeTodo(event) {
   console.log("finishing that task");
   let todo = event.target;
 
