@@ -18,45 +18,49 @@ function renderTodos(todos) {
         var todo = todos_1[_i];
         var isComplete = todo.isComplete;
         if (isComplete === true) {
-            toDoBody.innerHTML += "\n      <ul class=\"completed\" >".concat(todo.text, " \n      <button class=\"delete\" onclick=\"deleteButton(event)\" >Delete</button>\n      </ul>\n      ");
+            toDoBody.innerHTML += "\n      <ul id=\"".concat(todo.id, "\" class=\"completed\" >").concat(todo.text, " \n      <button class=\"delete\" onclick=\"deleteButton(event)\" >Delete</button>\n      </ul>\n      ");
         }
         else if (isComplete === false) {
-            toDoBody.innerHTML += "\n        <ul>".concat(todo.text, " \n        <button class=\"complete\" onclick=\"makeComplete(event)\" >Complete</button>\n        <button class=\"delete\" onclick=\"deleteButton(event)\" >Delete</button>\n        </ul>\n        ");
+            toDoBody.innerHTML += "\n        <ul>".concat(todo.text, " \n        <button id=\"").concat(todo.id, "\" class=\"complete\" onclick=\"makeComplete(event)\" >Complete</button>\n        <button class=\"delete\" onclick=\"deleteButton(event)\" >Delete</button>\n        </ul>\n        ");
         }
     }
 }
 //post route
 function postTodos(event) {
-    console.log('clicking add');
-    var todoInput = document.getElementById('toDoTextInput');
+    console.log("clicking add");
+    var todoInput = document.getElementById("toDoTextInput");
     var newTodo = {
-        text: todoInput.value
+        text: todoInput.value,
     };
     //   clears input
-    todoInput.value = '';
-    console.log('newTodo', newTodo);
+    todoInput.value = "";
+    console.log("newTodo", newTodo);
     axios({
-        url: '/todos',
-        method: 'POST',
-        data: newTodo
-    }).then(function (response) {
+        url: "/todos",
+        method: "POST",
+        data: newTodo,
+    })
+        .then(function (response) {
         getTodos();
-    }).catch(function (error) {
-        console.log(error, 'Error in posting todos');
+    })
+        .catch(function (error) {
+        console.log(error, "Error in posting todos");
     });
 }
 //put route
 function makeComplete(event) {
-    console.log('finishing that task');
-    var todoId = event.target.closest('ul').getAttribute('data-todoId');
-    console.log('todoId', todoId);
+    console.log("finishing that task");
+    var todo = event.target;
+    console.log("todoId", todo.id);
     axios({
-        url: "/todos/".concat(todoId),
-        method: 'PUT'
-    }).then(function (response) {
+        url: "/todos/".concat(todo.id),
+        method: "PUT",
+    })
+        .then(function (response) {
         getTodos();
-    }).catch(function (error) {
-        console.log(error, 'Error in completing todo');
+    })
+        .catch(function (error) {
+        console.log(error, "Error in completing todo");
     });
 }
 getTodos();
