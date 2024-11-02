@@ -85,4 +85,20 @@ function completeTodo(event) {
     });
 }
 
+//delete route
+function deleteButton(event) {
+    console.log('trying to delete');
+  
+    let todoId = event.target.closest('ul').getAttribute('data-todoId');
+  
+    axios({
+      method: 'DELETE',
+      url: `/todos/${todoId}`
+    }).then((response) => {
+      getTodos();
+    }).catch((error) => {
+      console.log('delete /todos/:id fail', error);
+    })
+  }
+
 getTodos();
