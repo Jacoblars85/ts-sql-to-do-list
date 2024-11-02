@@ -40,50 +40,49 @@ function renderTodos(todos) {
 
 //post route
 function postTodos(event) {
-    console.log('clicking add');
-  
-    let todoInput = document.getElementById('toDoTextInput') as HTMLInputElement;
-  
-  let newTodo = {
-    text: todoInput.value
-  };
-  
-//   clears input
-  todoInput.value = '';
+  console.log("clicking add");
 
-  console.log('newTodo', newTodo);
-  
-  
-    axios({
-      url: '/todos',
-      method: 'POST',
-      data: newTodo
-    }).then((response) => {
-      getTodos()
-    }).catch((error) =>{
-      console.log(error, 'Error in posting todos');
+  let todoInput = document.getElementById("toDoTextInput") as HTMLInputElement;
+
+  let newTodo = {
+    text: todoInput.value,
+  };
+
+  //   clears input
+  todoInput.value = "";
+
+  console.log("newTodo", newTodo);
+
+  axios({
+    url: "/todos",
+    method: "POST",
+    data: newTodo,
+  })
+    .then((response) => {
+      getTodos();
     })
-  }
+    .catch((error) => {
+      console.log(error, "Error in posting todos");
+    });
+}
 
 //put route
 function makeComplete(event) {
-    console.log('finishing that task');
-    let todoId = event.target.closest('ul').getAttribute('data-todoId');
+  console.log("finishing that task");
+  let todoId = event.target.closest("ul").getAttribute("data-todoId");
 
-    console.log('todoId', todoId);
- 
-  
-    axios({
-      url: `/todos/${todoId}`,
-      method: 'PUT'
-    }).then((response) => {
-      getTodos()
-    }).catch((error) =>{
-      console.log(error, 'Error in completing todo');
+  console.log("todoId", todoId);
+
+  axios({
+    url: `/todos/${todoId}`,
+    method: "PUT",
+  })
+    .then((response) => {
+      getTodos();
     })
-   
-  }
-
-
+    .catch((error) => {
+      console.log(error, "Error in completing todo");
+    });
+}
 
 getTodos();
