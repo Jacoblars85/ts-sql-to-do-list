@@ -30,7 +30,7 @@ function renderTodos(todos) {
     } else if (isComplete === false) {
       toDoBody.innerHTML += `
         <ul>${todo.text} 
-        <button id="${todo.id}" class="complete" onclick="makeComplete(event)" >Complete</button>
+        <button id="${todo.id}" class="complete" onclick="completeTodo(event)" >Complete</button>
         <button class="delete" onclick="deleteButton(event)" >Delete</button>
         </ul>
         `;
