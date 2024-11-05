@@ -1,27 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <script src="./scripts/axios.js"></script>
-  <script src="./scripts/client.js"></script>
-  <title>SQL TO-DO List</title>
-</head>
-<body>
-  <header>
-    <h1>SQL TO-DO List</h1>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="./scripts/axios.js"></script>
+    <script src="./scripts/client.js"></script>
+    <title>SQL TO-DO List</title>
+  </head>
+  <body>
+    <header>
+      <h1>SQL TO-DO List</h1>
+    </header>
 
-  <input id="toDoTextInput" type="text" placeholder="Add To Do">
+    <div class="inputArea">
+      <input id="toDoTextInput" type="text" placeholder="Add To Do" />
+      <button onclick="postTodos(event)">Add</button>
+    </div>
 
-  <button onclick="postTodos(event)">Add</button>
+    <h3>Things To Do</h3>
 
-  <h3>Things To Do</h3>
-
-<section id="todoBody">
-
-</section>
-
-</body>
+    <section id="todoBody"></section>
+  </body>
 </html>
