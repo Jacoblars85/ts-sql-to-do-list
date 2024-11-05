@@ -50,9 +50,7 @@ function postTodos(event) {
 
   //   clears input
   todoInput.value = "";
-
-  console.log("newTodo", newTodo);
-
+  
   axios({
     url: "/todos",
     method: "POST",
@@ -70,8 +68,6 @@ function postTodos(event) {
 function completeTodo(event) {
   console.log("finishing that task");
   let todo = event.target;
-
-  console.log("todoId", todo.id);
 
   axios({
     url: `/todos/${todo.id}`,
@@ -91,9 +87,6 @@ function deleteButton(event) {
   
     let todo = event.target;
 
-  console.log("todoId", todo);
-
-  
     axios({
       method: 'DELETE',
       url: `/todos/${todo.id}`
