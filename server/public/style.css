@@ -35,3 +35,16 @@ h3 {
     border: 3px solid;
     background-color: aliceblue;
 }
+
+.completed {
+    text-decoration: line-through;
+    color: green;
+}
+
+.complete {
+    background-color: green;
+}
+
+.delete {
+    background-color: red;
+}
