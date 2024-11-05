@@ -89,7 +89,7 @@ function completeTodo(event) {
 function deleteButton(event) {
     console.log('trying to delete');
   
-    let todo = event.target.closest('ul').getAttribute('data-todoId');
+    let todo = event.target;
 
   console.log("todoId", todo.id);
 
