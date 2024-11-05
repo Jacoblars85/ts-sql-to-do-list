@@ -91,7 +91,7 @@ function deleteButton(event) {
   
     let todo = event.target;
 
-  console.log("todoId", todo.id);
+  console.log("todoId", todo);
 
   
     axios({
