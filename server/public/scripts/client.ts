@@ -50,7 +50,7 @@ function postTodos(event) {
 
   //   clears input
   todoInput.value = "";
-  
+
   axios({
     url: "/todos",
     method: "POST",
@@ -83,18 +83,20 @@ function completeTodo(event) {
 
 //delete route
 function deleteButton(event) {
-    console.log('trying to delete');
-  
-    let todo = event.target;
+  console.log("trying to delete");
 
-    axios({
-      method: 'DELETE',
-      url: `/todos/${todo.id}`
-    }).then((response) => {
+  let todo = event.target;
+
+  axios({
+    method: "DELETE",
+    url: `/todos/${todo.id}`,
+  })
+    .then((response) => {
       getTodos();
-    }).catch((error) => {
-      console.log('delete /todos/:id fail', error);
     })
-  }
+    .catch((error) => {
+      console.log("delete /todos/:id fail", error);
+    });
+}
 
 getTodos();
