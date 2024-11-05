@@ -66,10 +66,11 @@ function completeTodo(event) {
 //delete route
 function deleteButton(event) {
     console.log('trying to delete');
-    var todoId = event.target.closest('ul').getAttribute('data-todoId');
+    var todo = event.target;
+    console.log("todoId", todo.id);
     axios({
         method: 'DELETE',
-        url: "/todos/".concat(todoId)
+        url: "/todos/".concat(todo)
     }).then(function (response) {
         getTodos();
     }).catch(function (error) {
