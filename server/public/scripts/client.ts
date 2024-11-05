@@ -96,7 +96,7 @@ function deleteButton(event) {
   
     axios({
       method: 'DELETE',
-      url: `/todos/${todo}`
+      url: `/todos/${todo.id}`
     }).then((response) => {
       getTodos();
     }).catch((error) => {
