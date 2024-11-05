@@ -42,9 +42,9 @@ function renderTodos(todos) {
 function postTodos(event) {
   console.log("clicking add");
 
-  let todoInput = document.getElementById("toDoTextInput") as HTMLInputElement;
+  let todoInput: any = document.getElementById("toDoTextInput") as HTMLInputElement;
 
-  let newTodo = {
+  let newTodo: any = {
     text: todoInput.value,
   };
 
@@ -67,7 +67,8 @@ function postTodos(event) {
 //put route
 function completeTodo(event) {
   console.log("finishing that task");
-  let todo = event.target;
+  
+  let todo: any = event.target;
 
   axios({
     url: `/todos/${todo.id}`,
@@ -85,7 +86,7 @@ function completeTodo(event) {
 function deleteButton(event) {
   console.log("trying to delete");
 
-  let todo = event.target;
+  let todo: any = event.target;
 
   axios({
     method: "DELETE",
