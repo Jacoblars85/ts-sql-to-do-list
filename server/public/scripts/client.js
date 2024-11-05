@@ -18,10 +18,10 @@ function renderTodos(todos) {
         var todo = todos_1[_i];
         var isComplete = todo.isComplete;
         if (isComplete === true) {
-            toDoBody.innerHTML += "\n      <ul id=\"".concat(todo.id, "\" class=\"completed\" >").concat(todo.text, " \n      <button class=\"delete\" onclick=\"deleteButton(event)\" >Delete</button>\n      </ul>\n      ");
+            toDoBody.innerHTML += "\n      <ul class=\"completed\" >".concat(todo.text, " \n      <button id=\"").concat(todo.id, "\" class=\"delete\" onclick=\"deleteButton(event)\" >Delete</button>\n      </ul>\n      ");
         }
         else if (isComplete === false) {
-            toDoBody.innerHTML += "\n        <ul>".concat(todo.text, " \n        <button id=\"").concat(todo.id, "\" class=\"complete\" onclick=\"completeTodo(event)\" >Complete</button>\n        <button class=\"delete\" onclick=\"deleteButton(event)\" >Delete</button>\n        </ul>\n        ");
+            toDoBody.innerHTML += "\n        <ul>".concat(todo.text, " \n        <button id=\"").concat(todo.id, "\" class=\"complete\" onclick=\"completeTodo(event)\" >Complete</button>\n        <button id=\"").concat(todo.id, "\" class=\"delete\" onclick=\"deleteButton(event)\" >Delete</button>\n        </ul>\n        ");
         }
     }
 }
@@ -67,7 +67,7 @@ function completeTodo(event) {
 function deleteButton(event) {
     console.log('trying to delete');
     var todo = event.target;
-    console.log("todoId", todo.id);
+    console.log("todoId", todo);
     axios({
         method: 'DELETE',
         url: "/todos/".concat(todo)
