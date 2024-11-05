@@ -34,7 +34,6 @@ function postTodos(event) {
     };
     //   clears input
     todoInput.value = "";
-    console.log("newTodo", newTodo);
     axios({
         url: "/todos",
         method: "POST",
@@ -51,7 +50,6 @@ function postTodos(event) {
 function completeTodo(event) {
     console.log("finishing that task");
     var todo = event.target;
-    console.log("todoId", todo.id);
     axios({
         url: "/todos/".concat(todo.id),
         method: "PUT",
@@ -67,10 +65,9 @@ function completeTodo(event) {
 function deleteButton(event) {
     console.log('trying to delete');
     var todo = event.target;
-    console.log("todoId", todo);
     axios({
         method: 'DELETE',
-        url: "/todos/".concat(todo)
+        url: "/todos/".concat(todo.id)
     }).then(function (response) {
         getTodos();
     }).catch(function (error) {
