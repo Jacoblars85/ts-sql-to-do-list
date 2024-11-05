@@ -44,7 +44,7 @@ function postTodos(event) {
 
   let todoInput: any = document.getElementById("toDoTextInput") as HTMLInputElement;
 
-  let newTodo: any = {
+  let newTodo: object = {
     text: todoInput.value,
   };
 
@@ -67,7 +67,7 @@ function postTodos(event) {
 //put route
 function completeTodo(event) {
   console.log("finishing that task");
-  
+
   let todo: any = event.target;
 
   axios({
