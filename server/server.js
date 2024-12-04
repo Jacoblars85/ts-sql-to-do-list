@@ -1,15 +1,10 @@
-const express = require('express');
-const app = express();
-
-const todos = require('./routes/todos.router.js');
-
-let PORT = process.env.PORT || 5001;
-
+var express = require('express');
+var app = express();
+var todos = require('./routes/todos.router.js');
+var PORT = process.env.PORT || 5001;
 app.use(express.static('./server/public'));
 app.use(express.json());
-
 app.use('/todos', todos);
-
-app.listen(PORT, () => {
-  console.log('server running on: ', PORT);
+app.listen(PORT, function () {
+    console.log('server running on: ', PORT);
 });
